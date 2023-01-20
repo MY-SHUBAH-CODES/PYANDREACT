@@ -17,5 +17,6 @@ from django.urls import path
 from app1 import views
 
 urlpatterns = [
-    path('home/',views.home,name="home" ),
+    path('',views.Studentv1,name="home" ),
+
 ]

@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+class Studentadmin(admin.ModelAdmin):
+    list_display=['id','name','age','roll_number']
+admin.site.register(Student,Studentadmin)
+
+

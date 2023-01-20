@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 function App() {
+  const[mydata,setMydata]=useState([]);
+  useEffect(()=>{
+    axios
+    .get("http://127.0.0.1:8000/")
+    
+
+.then(resp => {
+setMydata(resp.data);
+    
+});
+
+
+
+  },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <>
+   <div style={{'backgroundColor':'green'}}>
+   {mydata.map((stu)=>
+   {
+    const {id,name,age,roll_number}=stu;
+    return (
+      
+    <div className="card" key={id} style={{'color':'white','backgroundColor':'black','height':'100px','width':'300px','marginLeft':'500px'}}>
+     <p>{name}</p> 
+     <p>{age}</p> 
+     <p>{roll_number}</p> 
     </div>
+  
+
+    );
+   }
+
+   )}
+   </div>
+   </>
   );
 }
 
